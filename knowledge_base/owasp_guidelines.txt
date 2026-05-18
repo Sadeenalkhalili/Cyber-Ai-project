@@ -1,0 +1,20 @@
+SSH Security Guidelines:
+
+- Disable password authentication whenever possible.
+- Enforce multi-factor authentication (MFA).
+- Restrict SSH access using firewalls or VPNs.
+- Use strong cryptographic keys.
+- Monitor repeated failed login attempts.
+
+Injection Prevention Guidelines:
+
+- Validate all user input.
+- Use parameterized SQL queries.
+- Avoid exposing database error messages.
+- Sanitize input fields properly.
+
+Data Protection Guidelines:
+
+- Encrypt sensitive customer data.
+- Use secure encryption standards.
+- Restrict unauthorized access to stored data.
