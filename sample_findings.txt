@@ -1,0 +1,11 @@
+Finding 1:
+Port 22 is publicly exposed.
+SSH password authentication is enabled.
+No MFA is configured.
+
+Finding 2:
+The web application allows users to enter input without validation.
+Error messages reveal database details.
+
+Finding 3:
+Sensitive customer data is stored without encryption.
