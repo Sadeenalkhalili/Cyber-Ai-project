@@ -1,0 +1,77 @@
+
+==================================================
+VULNERABILITY 1
+==================================================
+
+Original Finding:
+1:
+Port 22 is publicly exposed.
+SSH password authentication is enabled.
+No MFA is configured.
+
+Severity:
+High
+
+Category:
+Authentication and Authorization
+
+Risk:
+Exposure of Port 22 with SSH password authentication and no MFA allows attackers to attempt brute-force login attempts, potentially leading to unauthorized access to the system.
+
+Remediation:
+Disable SSH password authentication, implement MFA, and restrict access to Port 22 to only necessary IP addresses.
+
+Audit Summary:
+The system is vulnerable to unauthorized access due to the exposure of Port 22 with SSH password authentication and no MFA. It is recommended to disable SSH password authentication, implement MFA, and restrict access to Port 22 to mitigate this risk.
+
+
+
+==================================================
+VULNERABILITY 2
+==================================================
+
+Original Finding:
+2:
+The web application shows detailed database error messages to users.
+Input fields do not validate user input.
+
+Severity:
+High
+
+Category:
+Input Validation and Error Handling
+
+Risk:
+This vulnerability allows attackers to gain sensitive information about the database and potentially exploit SQL injection vulnerabilities, leading to unauthorized data access or modification.
+
+Remediation:
+Implement input validation and sanitization on all user input fields, and configure the web application to display generic error messages instead of detailed database error messages.
+
+Audit Summary:
+The web application's failure to validate user input and handle errors securely poses a significant risk to the security of the database and sensitive data. It is recommended to address this vulnerability promptly to prevent potential attacks.
+
+
+
+==================================================
+VULNERABILITY 3
+==================================================
+
+Original Finding:
+3:
+Customer data is stored in plain text without encryption.
+
+Severity:
+Critical
+
+Category:
+Data Protection
+
+Risk:
+Unauthorized access to sensitive customer data, potentially leading to identity theft, financial loss, and reputational damage
+
+Remediation:
+Implement encryption for customer data, both in transit and at rest, using industry-standard encryption protocols
+
+Audit Summary:
+The storage of customer data in plain text without encryption poses a significant risk to the confidentiality and integrity of sensitive information, and it is essential to prioritize the implementation of encryption measures to protect against unauthorized access and potential data breaches
+
