@@ -1,31 +1,31 @@
+from langchain_community.document_loaders import DirectoryLoader
 from langchain_community.document_loaders import TextLoader
-from langchain_text_splitters import RecursiveCharacterTextSplitter#LLMs retrieve better from smaller sections.
 from langchain_chroma import Chroma
 from langchain_huggingface import HuggingFaceEmbeddings
 
-
+#without splitting be3amel kul file la7aloh 
 def setup_rag():
 
-    loader = TextLoader("knowledge_base/owasp_guidelines.txt")
-    documents = loader.load()
-
-    splitter = RecursiveCharacterTextSplitter(
-        chunk_size=300,
-        chunk_overlap=50
+    loader = DirectoryLoader(
+        "knowledge_base",
+        glob="*.txt",
+        loader_cls=TextLoader
     )
 
-    split_docs = splitter.split_documents(documents)
+    documents = loader.load()
 
     embeddings = HuggingFaceEmbeddings(
         model_name="sentence-transformers/all-MiniLM-L6-v2"
     )
 
-    vectorstore = Chroma.from_documents(#Searches the vector DB for relevant chunks
-        documents=split_docs,
+    vectorstore = Chroma.from_documents(
+        documents=documents,
         embedding=embeddings,
         persist_directory="chroma_db"
     )
 
-    retriever = vectorstore.as_retriever(search_kwargs={"k": 1})#the most 2 relevant chuncks
+    retriever = vectorstore.as_retriever(
+        search_kwargs={"k": 1}
+    )
 
     return retriever

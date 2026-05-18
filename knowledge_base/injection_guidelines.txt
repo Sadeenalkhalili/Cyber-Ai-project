@@ -1,0 +1,6 @@
+Injection Prevention Guidelines:
+
+- Validate all user input.
+- Use parameterized SQL queries.
+- Avoid exposing database error messages.
+- Sanitize input fields properly.

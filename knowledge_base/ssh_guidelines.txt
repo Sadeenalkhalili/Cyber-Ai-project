@@ -1,0 +1,7 @@
+SSH Security Guidelines:
+
+- Disable password authentication whenever possible.
+- Enforce multi-factor authentication (MFA).
+- Restrict SSH access using firewalls or VPNs.
+- Use strong cryptographic keys.
+- Monitor repeated failed login attempts.

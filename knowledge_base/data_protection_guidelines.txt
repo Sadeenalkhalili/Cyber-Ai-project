@@ -1,0 +1,5 @@
+Data Protection Guidelines:
+
+- Encrypt sensitive customer data.
+- Use secure encryption standards.
+- Restrict unauthorized access to stored data.

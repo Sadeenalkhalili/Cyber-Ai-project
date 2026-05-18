@@ -16,16 +16,22 @@ Category:
 SSH Security
 
 Risk:
-Exposure of Port 22 and enabled SSH password authentication without MFA allows attackers to attempt brute-force login attempts, potentially leading to unauthorized access to the system.
+Exposing Port 22 and enabling SSH password authentication without MFA allows attackers to attempt brute-force attacks, potentially leading to unauthorized access to the system.
 
 Remediation:
 Disable password authentication, enforce multi-factor authentication, restrict SSH access using firewalls or VPNs, and monitor repeated failed login attempts.
 
 Retrieved Guideline Used:
-SSH Security Guidelines
+SSH Security Guidelines:
+
+- Disable password authentication whenever possible.
+- Enforce multi-factor authentication (MFA).
+- Restrict SSH access using firewalls or VPNs.
+- Use strong cryptographic keys.
+- Monitor repeated failed login attempts.
 
 Audit Summary:
-The system is vulnerable to unauthorized access due to exposed Port 22 and weak SSH authentication configuration. It is recommended to follow the SSH Security Guidelines to mitigate this risk.
+The system is vulnerable to unauthorized access due to exposed Port 22 and lack of MFA. It is recommended to follow SSH security guidelines to mitigate this risk.
 
 
 
@@ -45,16 +51,21 @@ Category:
 Injection
 
 Risk:
-The web application is vulnerable to SQL injection attacks, which could lead to unauthorized access to sensitive data, as it exposes detailed database error messages and does not validate user input.
+The web application is vulnerable to SQL injection attacks, which could lead to unauthorized access to sensitive data, modification of database records, or even complete database compromise. This is because detailed database error messages are exposed to users, and input fields do not validate user input, allowing malicious input to be processed.
 
 Remediation:
-Implement parameterized SQL queries, validate all user input, and sanitize input fields to prevent SQL injection attacks. Additionally, avoid exposing database error messages to users.
+To remediate this vulnerability, the web application should be updated to use parameterized SQL queries, validate all user input, and sanitize input fields properly. Additionally, database error messages should be logged internally and not exposed to users. This will prevent attackers from exploiting the vulnerability and reduce the risk of a successful SQL injection attack.
 
 Retrieved Guideline Used:
-Injection Prevention Guidelines: Validate all user input, use parameterized SQL queries, avoid exposing database error messages, and sanitize input fields properly.
+Injection Prevention Guidelines:
+
+- Validate all user input.
+- Use parameterized SQL queries.
+- Avoid exposing database error messages.
+- Sanitize input fields properly.
 
 Audit Summary:
-The web application is currently vulnerable to SQL injection attacks due to the exposure of detailed database error messages and lack of input validation. This is a high-severity vulnerability that requires immediate attention to prevent potential data breaches.
+The web application was found to be vulnerable to SQL injection attacks due to the exposure of detailed database error messages and lack of input validation. This is a high-severity vulnerability that requires immediate attention and remediation to prevent potential data breaches and unauthorized access.
 
 
 
@@ -76,11 +87,16 @@ Risk:
 Unauthorized access to sensitive customer data, potentially leading to identity theft and financial loss
 
 Remediation:
-Implement encryption for all stored customer data using secure encryption standards
+Implement encryption for all stored customer data using secure encryption standards, and restrict access to authorized personnel only
 
 Retrieved Guideline Used:
-Encrypt sensitive customer data. Use secure encryption standards. Restrict unauthorized access to stored data.
+Data Protection Guidelines:
+
+- Encrypt sensitive customer data.
+- Use secure encryption standards.
+- Restrict unauthorized access to stored data.
+
 
 Audit Summary:
-Customer data is stored in plain text without encryption, violating data protection guidelines. This is a critical vulnerability that requires immediate attention to prevent potential data breaches.
+Customer data is currently stored in plain text, violating data protection guidelines. This critical vulnerability must be addressed immediately to prevent potential data breaches and protect customer information.
 
