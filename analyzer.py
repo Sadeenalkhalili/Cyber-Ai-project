@@ -6,7 +6,8 @@ from rag import setup_rag
 retriever = setup_rag()
 
 
-def analyze_vulnerability(finding_text: str) -> VulnerabilityAnalysis:
+def analyze_vulnerability(finding_text: str):
+
     docs = retriever.invoke(finding_text)
 
     retrieved_context = "\n".join(
@@ -36,10 +37,10 @@ Rules:
 - Explain the risk clearly.
 - Suggest only defensive remediation.
 - Use the retrieved cybersecurity guidelines in your reasoning.
-- Include the retrieved cybersecurity guideline used.
 - Do not provide offensive hacking steps.
 - Write a professional audit summary.
 """
 
     result = structured_llm.invoke(prompt)
-    return result
+
+    return result, retrieved_context

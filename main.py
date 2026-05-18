@@ -14,7 +14,7 @@ report_lines = []
 
 for index, finding in enumerate(findings, start=1):
 
-    result = analyze_vulnerability(finding)
+    result, retrieved_context = analyze_vulnerability(finding)
 
     section = f"""
 ==================================================
@@ -37,7 +37,7 @@ Remediation:
 {result.remediation}
 
 Retrieved Guideline Used:
-{result.retrieved_guideline}
+{retrieved_context}
 
 Audit Summary:
 {result.audit_summary}

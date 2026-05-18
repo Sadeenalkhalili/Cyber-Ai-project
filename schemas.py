@@ -7,4 +7,3 @@ class VulnerabilityAnalysis(BaseModel):
     risk: str = Field(description="Clear explanation of the security risk")
     remediation: str = Field(description="Safe recommended fix")
     audit_summary: str = Field(description="Professional audit-style summary")
-    retrieved_guideline: str = Field(description="The cybersecurity guideline used from the knowledge base")
