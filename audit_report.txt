@@ -13,16 +13,19 @@ Severity:
 High
 
 Category:
-Authentication and Authorization
+SSH Security
 
 Risk:
-Exposure of Port 22 with SSH password authentication and no MFA allows attackers to attempt brute-force login attempts, potentially leading to unauthorized access to the system.
+Exposure of Port 22 and enabled SSH password authentication without MFA allows attackers to attempt brute-force login attempts, potentially leading to unauthorized access to the system.
 
 Remediation:
-Disable SSH password authentication, implement MFA, and restrict access to Port 22 to only necessary IP addresses.
+Disable password authentication, enforce multi-factor authentication, restrict SSH access using firewalls or VPNs, and monitor repeated failed login attempts.
+
+Retrieved Guideline Used:
+SSH Security Guidelines
 
 Audit Summary:
-The system is vulnerable to unauthorized access due to the exposure of Port 22 with SSH password authentication and no MFA. It is recommended to disable SSH password authentication, implement MFA, and restrict access to Port 22 to mitigate this risk.
+The system is vulnerable to unauthorized access due to exposed Port 22 and weak SSH authentication configuration. It is recommended to follow the SSH Security Guidelines to mitigate this risk.
 
 
 
@@ -39,16 +42,19 @@ Severity:
 High
 
 Category:
-Input Validation and Error Handling
+Injection
 
 Risk:
-This vulnerability allows attackers to gain sensitive information about the database and potentially exploit SQL injection vulnerabilities, leading to unauthorized data access or modification.
+The web application is vulnerable to SQL injection attacks, which could lead to unauthorized access to sensitive data, as it exposes detailed database error messages and does not validate user input.
 
 Remediation:
-Implement input validation and sanitization on all user input fields, and configure the web application to display generic error messages instead of detailed database error messages.
+Implement parameterized SQL queries, validate all user input, and sanitize input fields to prevent SQL injection attacks. Additionally, avoid exposing database error messages to users.
+
+Retrieved Guideline Used:
+Injection Prevention Guidelines: Validate all user input, use parameterized SQL queries, avoid exposing database error messages, and sanitize input fields properly.
 
 Audit Summary:
-The web application's failure to validate user input and handle errors securely poses a significant risk to the security of the database and sensitive data. It is recommended to address this vulnerability promptly to prevent potential attacks.
+The web application is currently vulnerable to SQL injection attacks due to the exposure of detailed database error messages and lack of input validation. This is a high-severity vulnerability that requires immediate attention to prevent potential data breaches.
 
 
 
@@ -67,11 +73,14 @@ Category:
 Data Protection
 
 Risk:
-Unauthorized access to sensitive customer data, potentially leading to identity theft, financial loss, and reputational damage
+Unauthorized access to sensitive customer data, potentially leading to identity theft and financial loss
 
 Remediation:
-Implement encryption for customer data, both in transit and at rest, using industry-standard encryption protocols
+Implement encryption for all stored customer data using secure encryption standards
+
+Retrieved Guideline Used:
+Encrypt sensitive customer data. Use secure encryption standards. Restrict unauthorized access to stored data.
 
 Audit Summary:
-The storage of customer data in plain text without encryption poses a significant risk to the confidentiality and integrity of sensitive information, and it is essential to prioritize the implementation of encryption measures to protect against unauthorized access and potential data breaches
+Customer data is stored in plain text without encryption, violating data protection guidelines. This is a critical vulnerability that requires immediate attention to prevent potential data breaches.
 

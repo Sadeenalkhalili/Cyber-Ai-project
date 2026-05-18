@@ -1,7 +1,7 @@
 from langchain_community.document_loaders import TextLoader
-from langchain.text_splitter import RecursiveCharacterTextSplitter#LLMs retrieve better from smaller sections.
+from langchain_text_splitters import RecursiveCharacterTextSplitter#LLMs retrieve better from smaller sections.
 from langchain_chroma import Chroma
-from langchain_community.embeddings import HuggingFaceEmbeddings
+from langchain_huggingface import HuggingFaceEmbeddings
 
 
 def setup_rag():
@@ -26,6 +26,6 @@ def setup_rag():
         persist_directory="chroma_db"
     )
 
-    retriever = vectorstore.as_retriever(search_kwargs={"k": 2})
+    retriever = vectorstore.as_retriever(search_kwargs={"k": 1})#the most 2 relevant chuncks
 
     return retriever

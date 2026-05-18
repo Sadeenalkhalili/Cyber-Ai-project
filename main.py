@@ -36,6 +36,9 @@ Risk:
 Remediation:
 {result.remediation}
 
+Retrieved Guideline Used:
+{result.retrieved_guideline}
+
 Audit Summary:
 {result.audit_summary}
 
