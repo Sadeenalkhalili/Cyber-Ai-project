@@ -16,6 +16,7 @@ for index, finding in enumerate(findings, start=1):
         result = run_cyber_audit_crew(finding)
 
     except Exception as e:
+        print(f"Error occurred: {e}")
         print("Rate/API error happened. Waiting 20 seconds then retrying...")
         time.sleep(20)
         result = run_cyber_audit_crew(finding)
