@@ -8,10 +8,10 @@ retriever = setup_rag()
 
 def analyze_vulnerability(finding_text: str):
 
-    docs = retriever.invoke(finding_text)
+    docs = retriever.invoke(finding_text)#does NOT return plain text,,return LangChain Document objects so it cannot understand py objects directly
 
     retrieved_context = "\n".join(
-        [doc.page_content for doc in docs]
+        [doc.page_content for doc in docs]#we convert them into plain text
     )
 
     llm = ChatGroq(

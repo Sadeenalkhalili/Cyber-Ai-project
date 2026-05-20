@@ -2,7 +2,8 @@ langchain
 langchain-groq
 python-dotenv
 pydantic
-langchain-community#Provides document loaders/splitters
-langchain-chroma#Connects LangChain to ChromaDB
-sentence-transformers#Creates embeddings
+langchain-community
+langchain-chroma
+sentence-transformers
 chromadb
+crewai
