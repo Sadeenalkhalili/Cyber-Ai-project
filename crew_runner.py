@@ -27,6 +27,14 @@ def run_cyber_audit_crew(finding_text: str):
         llm=llm,
         verbose=True#Show what the agent is doing in the terminal
     )
+    
+    severity_agent = Agent(
+    role="Severity Classification Analyst",
+    goal="Classify vulnerability severity as Low, Medium, High, or Critical.",
+    backstory="You specialize in risk scoring and vulnerability severity classification.",
+    llm=llm,
+    verbose=True
+    )
 
     compliance_agent = Agent(
         role="Cybersecurity Compliance Analyst",
@@ -59,6 +67,9 @@ Analyze the following vulnerability finding.
 Finding:
 {finding_text}
 
+Retrieved Cybersecurity Guideline:
+{retrieved_context}
+
 Explain:
 - what the vulnerability is
 - why it matters
@@ -71,8 +82,27 @@ Do not repeat the same idea.
         expected_output="A clear vulnerability analysis.",
         agent=vulnerability_analyst
     )
-
+    
     task2 = Task(
+        description=f"""
+Classify the severity of this vulnerability.
+
+Finding:
+{finding_text}
+
+Retrieved Cybersecurity Guideline:
+{retrieved_context}
+
+Use only one severity level:
+Low, Medium, High, or Critical.
+
+Briefly justify the severity in maximum 80 words.
+""",
+        expected_output="Severity level and short justification.",
+        agent=severity_agent
+    )
+
+    task3 = Task(
         description=f"""
 Compare the vulnerability with the retrieved cybersecurity guideline.
 
@@ -87,9 +117,12 @@ Do not repeat the same idea.
         agent=compliance_agent
     )
 
-    task3 = Task(
+    task4 = Task(
         description=f"""
 Suggest defensive remediation steps for this vulnerability.
+
+Retrieved Cybersecurity Guideline:
+{retrieved_context}
 
 Use the vulnerability analysis and guideline mapping from previous tasks.
 Focus only on safe defensive recommendations.
@@ -100,7 +133,7 @@ Do not repeat the same idea.
         agent=remediation_agent
     )
 
-    task4 = Task(
+    task5 = Task(
         description=f"""
 Write a final cybersecurity audit report for this finding.
 
@@ -123,11 +156,12 @@ Keep the final report under 250 words.
     crew = Crew(
         agents=[
             vulnerability_analyst,
+            severity_agent,
             compliance_agent,
             remediation_agent,
             report_writer
         ],
-        tasks=[task1, task2, task3, task4],
+        tasks=[task1, task2, task3, task4, task5],
         process=Process.sequential,
         verbose=True
     )
